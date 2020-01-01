@@ -1,0 +1,26 @@
+{
+  "name": "auto-update",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "dependencies": {
+    "electron-updater": "^4.2.0"
+  },
+  "repository": {
+    "type" : "git",
+    "url" : "https://github.com/annattou/electron_autoupdate_demo"
+  },
+  "devDependencies": {
+    "devtron": "^1.4.0",
+    "electron": "^7.1.7",
+    "electron-builder": "^21.2.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "electron .",
+    "build": "electron-builder build --mac --win --publish never",
+    "deploy": "electron-builder build --mac --win --publish always"
+  },
+  "author": "",
+  "license": "ISC"
+}
