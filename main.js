@@ -60,6 +60,16 @@ app.on('activate', function () {
     }
 });
 
+//非同期通信
+ipcMain.on('app_version', (event) => {
+    event.sender.send('app_version', { version: app.getVersion() });
+});
+
+//event listener that will install the new version if the user selects “Restart”
+ipcMain.on('restart_app', () => {
+    autoUpdater.quitAndInstall();
+});
+
 //自動更新
 autoUpdater.on('update-available', () => {
     mainWindow.webContents.send('update_available');
@@ -69,12 +79,3 @@ autoUpdater.on('update-downloaded', () => {
     mainWindow.webContents.send('update_downloaded');
 });
 
-//event listener that will install the new version if the user selects “Restart”
-ipcMain.on('restart_app', () => {
-    autoUpdater.quitAndInstall();
-});
-
-//非同期通信
-ipcMain.on('app_version', (event) => {
-    event.sender.send('app_version', { version: app.getVersion() });
-});
